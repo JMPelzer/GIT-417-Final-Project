@@ -1,0 +1,434 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* root selector for CSS color variables 
+--dayText:#14213d;
+	--dayBackgrd:#f8f9fa;
+	--dayPrime:#e5e5e5;
+	--dayAccent: #ffc300;
+*/
+:root {
+    /*day*/
+	--dayText:#14213d;
+	--dayBackgrd: #fcfbf9;
+	--dayPrime: #a1b3d7;
+	--dayAccent: #FFD301;
+	
+	/*dark*/
+	--drkText: #f8f9fa;
+	--drkBackgrd:#14213d ;
+	--drkPrime: #e5e5e5;
+	--drkAccent:#ffc300;
+}
+/* GLOBAL STYLES for fixed 1280 px screen*/
+/* Hidden content for screen reader users - code from: https://webaim.org/techniques/css/invisiblecontent/ */
+.sr-only {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+header, main, footer{
+	width: 100%;
+	margin: 0 auto;
+}
+
+html{
+	background-color: var(--dayPrime) ;
+	
+}
+
+body{
+	width: 1280px;
+	background-color: var(--dayBackgrd) ;
+	margin: 0 auto;
+	color: var(--dayText);
+	line-height: 1.5;
+	font-family: "Oswald", sans-serif;
+	font-style: normal;
+	box-sizing: border-box;
+
+}
+/*font styles*/
+h1, h2, h3, h4{
+	text-align: center;
+	font-weight: bold;
+}
+h1{
+	align-self: center;
+	font-size: 4rem;
+	font-weight: 700;
+	color: var(--dayText);
+}
+
+h2{
+	font-size: 2.5rem;
+	font-weight: 800;
+	padding: 5px;
+	margin: 0.75rem;
+}
+
+h3{
+	font-size: 2rem;
+	margin: 0.5rem;
+}
+
+h4{
+	font-size: 1.8rem;
+	margin: 0.35rem;
+}
+
+p{
+	font-size: 2rem;
+	font-weight: 500;
+	text-align: center;
+	max-width: 65ch;
+	padding: 2px;
+	margin: 0 auto;
+}
+
+/* ----- IMAGES ----- */
+img{
+	display: block;
+	margin: 0 auto;
+}
+
+
+/* button styles*/
+#switcherButtons{
+	text-align: center;
+	padding: 10px;
+}
+button {
+	text-align: center;
+	text-decoration: none;
+	font-size: 16px;
+	font-weight: 600;
+	border-radius: 8px;
+	width: 250px;
+  }
+
+button, input[type="submit"]{
+	display: block;
+	padding: 1rem;
+	background-color: var(--dayAccent);
+	color: var(--dayText);
+	border: none;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+input[type="submit"]{
+	width: 90%;
+	margin: 0 auto;
+}
+/* ----- FORM CONTROLS ----- */
+input, label{
+	display: block;
+	font-size: 1rem;
+	font-family: sans-serif;
+}
+
+label{
+	margin: 0.5rem 0 0.25rem 0;
+}
+
+input{
+	padding: 0.5rem 0.25rem;
+	margin: 0 auto 1rem auto;
+	width: calc(100% - 1rem);
+}
+
+
+/*header styles*/
+header{
+	background-color: var(--dayPrime);
+	display: grid;
+	grid-template-columns: 1fr 2fr 4fr;
+	grid-gap:0.5rem;
+	
+}
+
+header img{
+	width: 130px;
+	height: 100px;
+	padding: 0.5rem;
+}
+/*Nav*/
+header nav{
+	align-self: end;
+}
+
+header nav ul{
+	display: flex;
+	justify-content: space-around;
+	padding: 8px;
+}
+nav a{
+	text-decoration: none;
+	color: var(--dayText);
+	font-size: 1.8rem;
+	font-weight: 300;
+	margin-right: 20px;
+}
+	
+nav a:hover{
+	background-color: var(--dayAccent);
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+
+ }
+
+ /*Christmas Promo*/
+#Christmas{
+	background-color: var(--dayPrime);
+	padding-bottom: 20px;
+ }
+
+#Christams .currentItem{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 2fr;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+.hiddenItem{
+	display: none;
+}
+
+#christmasButtons{
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+	
+}
+
+#Christmas img{
+	grid-row: 1/-1;
+}
+
+#Christmas h3{
+	grid-column: 2/-1;
+	align-self: end;
+}
+
+
+/*Mountainbike section*/
+
+#mtb-bikes {
+	padding-bottom: 20px;
+	
+}
+
+#mtb-bikes .currentItem{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 2fr;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+.hiddenItem{
+	display: none;
+}
+
+#mtbButtons{
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+}
+
+#mtb-bikes img{
+	grid-row: 1/-1;
+}
+
+#mtb-bikes h3{
+	grid-column: 2/-1;
+	align-self: end;
+}
+
+/*Road bike section*/
+ #rd-bikes {
+	background-color: var(--dayPrime);
+	padding-bottom: 20px;
+}
+
+#rd-bikes .currentItem{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 2fr;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+.hiddenItem{
+	display: none;
+}
+
+#roadButtons{
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+}
+
+#rd-bikes img{
+	grid-row: 1/-1;
+}
+
+#rd-bikes h3{
+	grid-column: 2/-1;
+	align-self: end;
+}
+
+  /*Kids bike section*/
+  #kids-bikes {
+	background-color: var(--dayPrime);
+	padding-bottom: 20px;
+}
+
+#kids-bikes .currentItem{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 2fr;
+	gap: 1rem;
+	padding: 2rem;
+}
+
+.hiddenItem{
+	display: none;
+}
+
+#kidsButtons{
+	display: flex;
+	justify-content: space-around;
+	padding: 1rem;
+}
+
+#kids-bikes img{
+	grid-row: 1/-1;
+}
+
+#kids-bikes h3{
+	grid-column: 2/-1;
+	align-self: end;
+}
+ /* Game -- roll double fours to win--*/
+
+#game{
+	background-color: var(--dayPrime);
+}
+
+ /* ----- Shopping----- */
+#cart{
+	margin-top: 2rem;
+	padding-bottom: 2rem;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	gap: 1rem;
+}
+
+#cart h2{
+	grid-column: 1/-1;
+}
+
+#products1{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1rem;
+}
+
+#products1 p{
+	width: fit-content;
+	font-size: 1.1rem;
+	padding: 0 0 1rem 0;
+}
+
+#products1 button, #products1 p{
+	margin: 0 auto;
+}
+
+#totals1 h3{
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid var(--);
+}
+
+#totals1 ul{
+	width: fit-content;
+	margin: 0 auto;
+	font-size: 1.2rem;
+}
+
+#totals1 li{
+	margin: 0.5rem 0;
+}
+
+#itemsList1 li{
+	padding-bottom: 0.25rem;
+	border-bottom: 1px solid var();
+}
+
+#totals1 button{
+	font-size: 1.1rem;
+	margin: 1rem auto;
+}
+/* form*/
+#contact{
+background-color: var(--dayPrime);
+}
+form {
+	
+	background-color: var(--dayBackgrd);
+	padding: 10px;
+	max-width: calc(1280px - 32px);
+ }
+
+ /*footer*/
+ footer{
+	background-color: var(--dayPrime);
+ }
