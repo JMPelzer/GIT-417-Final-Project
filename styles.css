@@ -320,7 +320,6 @@ nav a:hover {
 #Christmas {
 	background-color: var(--dayPrime);
 	padding-bottom: 20px;
-
 }
 
 #Christmas .currentItem {
@@ -339,7 +338,6 @@ nav a:hover {
 	display: flex;
 	justify-content: space-around;
 	padding: 1rem;
-
 }
 
 #Christmas img {
@@ -477,7 +475,7 @@ nav a:hover {
 /* ----- Shopping----- */
 #cart {
 	margin-top: 2rem;
-	padding-bottom: 2rem;
+	padding-bottom: 20px;
 	display: grid;
 	grid-template-columns: 3fr 1fr;
 	gap: 1rem;
@@ -485,6 +483,11 @@ nav a:hover {
 
 #cart h2 {
 	grid-column: 1/-1;
+}
+
+#cart img {
+	max-width: 200px;
+	max-height: 200px;
 }
 
 #products1 {
@@ -521,7 +524,7 @@ nav a:hover {
 
 #itemsList1 li {
 	padding-bottom: 0.25rem;
-	border-bottom: 1px solid var();
+	border-bottom: 1px solid var(--dayText);
 }
 
 #totals1 button {
@@ -626,12 +629,6 @@ input[type=submit]:hover {
 	background-color: #ffc300;
 	filter: drop-shadow(8px 8px 4px #777);
 }
-
-input:error,
-textarea:error {
-	background-color: rgb(245, 45, 45);
-}
-
 
 /*footer*/
 footer {
