@@ -25,9 +25,9 @@
             <ul>
                 <li><a href="#mtb-bikes">Mountain Bikes</a></li>
                 <li><a href="#rd-bikes">Road Bikes</a></li>
-                <li><a href="#e-bikes">E-Bikes</a></li>
-                <li><a href="#kid-bikes">Kid Bikes</a></li>
+                <li><a href="#kidsBikes">Kid Bikes</a></li>
                 <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#top">Top</a></li>
             </ul>
         </nav>
     </header>
@@ -210,16 +210,16 @@
         <!--contact form-->
         <section id="contact">
             <h2>Contact Us</h2>
-            <p>If you have questions, problems or warranty issues please contact us. Required fields are marked with an
-                asterisk</p>
-            <form action="https://wp.zybooks.com/form-viewer.php" method="POST" target="_blank">
-                <fieldset>
-                    <label for="firstName">Fist Name<span class="required">*</span></label>
-                    <input type="text" name="my-first-name" placeholder="(Enter first name)" id="firstName" required>
+            <p>If you have questions, problems or warranty issues please contact us.</p>
+            <p class="asteriskInfo">Required fields are marked with an asterisk (*)</p>
 
-                    <label for="lastName">Last Name<span class="required">*</span></label>
-                    <input type="text" name="my-last-name" placeholder="(Enter last name)" id="lastName" required>
-                </fieldset>
+            <form action="https://wp.zybooks.com/form-viewer.php" method="POST" target="_blank">
+                <label for="firstName">Fist Name<span class="required">*</span></label>
+                <input type="text" name="my-first-name" placeholder="(Enter first name)" id="firstName" required>
+
+                <label for="lastName">Last Name<span class="required">*</span></label>
+                <input type="text" name="my-last-name" placeholder="(Enter last name)" id="lastName" required>
+
                 <fieldset>
                     <legend>Preferred Contact Method<span class="required">*</span></legend>
 
@@ -229,14 +229,13 @@
                     <input type="radio" name="contact-pref" id="pref-phone">
                     <label for="pref-phone">Phone</label>
                 </fieldset>
-                <fieldset>
-                    <label for="email">Email<span class="required">*</span></label>
-                    <input type="email" name="my-email" placeholder="(Enter Email)" id="email" required>
+
+                <label for="email">Email<span class="required">*</span></label>
+                <input type="email" name="my-email" placeholder="(Enter Email)" id="email" required>
 
 
-                    <label for="phone">Phone<span class="required">*</span></label>
-                    <input type="tel" name="my-phone" placeholder="(Enter telephone number)" id="phone" required>
-                </fieldset>
+                <label for="phone">Phone<span class="required">*</span></label>
+                <input type="tel" name="my-phone" placeholder="(Enter telephone number)" id="phone" required>
 
                 <label for="message">Message<span class="required">*</span></label>
                 <textarea id="message" name="my-message"></textarea>

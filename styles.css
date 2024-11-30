@@ -259,9 +259,9 @@ input[type="submit"] {
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-input[type="submit"] {
-	width: 90%;
-	margin: 0 auto;
+button:hover {
+	background-color: #ffc300;
+	filter: drop-shadow(8px 8px 4px #777);
 }
 
 /*header styles*/
@@ -300,9 +300,21 @@ nav a {
 
 nav a:hover {
 	background-color: var(--dayAccent);
-	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+	padding: 4px;
+	border-radius: 6px;
+	filter: drop-shadow(8px 8px 4px #777);
 }
+
+[href="#top"] {
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	background-color: #8295bb;
+	padding: 4px;
+	border-radius: 6px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
 
 /*Christmas Promo*/
 #Christmas {
@@ -343,6 +355,7 @@ nav a:hover {
 /*Mountainbike section*/
 
 #mtb-bikes {
+	background-color: var(--dayBackgrd);
 	padding-bottom: 20px;
 }
 
@@ -407,12 +420,12 @@ nav a:hover {
 }
 
 /*Kids bike section*/
-#kids-bikes {
-	background-color: var(--dayPrime);
+#kidsBikes {
+	background-color: var(--dayBackgrd);
 	padding-bottom: 20px;
 }
 
-#kids-bikes .currentItem {
+#kidsBikes .currentItem {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 2fr;
@@ -430,19 +443,35 @@ nav a:hover {
 	padding: 1rem;
 }
 
-#kids-bikes img {
+#kidsBikes img {
 	grid-row: 1/-1;
 }
 
-#kids-bikes h3 {
+#kidsBikes h3 {
 	grid-column: 2/-1;
 	align-self: end;
 }
 
+
 /* Game -- roll double fours to win--*/
 
 #game {
-	background-color: var(--dayPrime);
+	background-color: #6994eb;
+	max-width: calc(1280px - 32px);
+	margin: auto;
+	padding: 2rem;
+	border: 2px solid var(--dayText);
+	border-radius: 4px;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#game p {
+	font-size: 1.6rem;
+}
+
+#game button {
+	display: block;
+	margin: auto;
 }
 
 /* ----- Shopping----- */
@@ -505,6 +534,23 @@ nav a:hover {
 	background-color: var(--dayPrime);
 }
 
+#contact p {
+	font-size: 1.8rem;
+}
+
+.asteriskInfo {
+	font-size: 0.8rem;
+	font-weight: 300;
+}
+
+form {
+	max-width: calc(1280px - 32px);
+	margin: auto;
+	padding: 10px;
+	background-color: var(--dayBackgrd);
+	border-radius: 6px;
+}
+
 .required {
 	color: red;
 	font-size: 1.4rem;
@@ -513,52 +559,39 @@ nav a:hover {
 
 /* ----- FORM CONTROLS ----- */
 input,
-textarea,
-label {
+label,
+fieldset,
+textarea {
 	display: block;
 	font-size: 1rem;
-	width: calc(100% - 1.5rem);
+	width: 95%;
 }
 
 label {
-	margin: 0.5rem 0 0.25rem 0;
 	font-weight: bold;
+	margin: 0 auto 1rem auto;
+	width: calc(60% - 1rem);
 }
 
+fieldset,
 input,
-select,
 textarea {
-	padding: 10px;
+	padding: 20px;
 	margin: 0 auto 1rem auto;
-	width: calc(100% - 1rem);
+	width: calc(60% - 1rem);
 	font-size: 1rem;
 	border-radius: 5px;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-	border: 2px inset green;
-	;
-	box-shadow: 0 0 0 0.09em var(--dayText);
-}
-
-input:error,
-select:error,
-textarea:error {
-	background-color: red;
 }
 
 fieldset {
 	margin: 0.5em auto;
 	padding-bottom: 0.5em;
-	width: 90%;
+	width: 60%;
 	border-radius: 4px;
 	border: 1px solid var(--dayText);
 	display: grid;
 	grid-template-columns: 30px 1fr 30px 1fr;
 }
-
 
 legend {
 	font-weight: bold;
@@ -567,30 +600,38 @@ legend {
 fieldset label {
 	display: inline;
 	width: 60%;
+	margin-left: 0;
 }
 
 fieldset input {
 	display: inline;
-	width: 20px;
+	width: 25px;
 }
 
 input[type="radio"] {
 	margin-top: 0.4em;
 	outline: none;
 	border: 1px solid var(--dayText);
-	border-radius: 25%;
+	border-radius: 30%;
 }
 
-
-
-form {
-	width: 90%;
-	max-width: calc(1280px - 32px);
-	margin: 10px, auto;
-	padding: 10px;
-	background-color: var(--dayBackgrd);
-	border-radius: 6px;
+input[type=submit] {
+	width: 30%;
+	cursor: pointer;
+	font-weight: bold;
+	font-size: 1.5rem;
 }
+
+input[type=submit]:hover {
+	background-color: #ffc300;
+	filter: drop-shadow(8px 8px 4px #777);
+}
+
+input:error,
+textarea:error {
+	background-color: rgb(245, 45, 45);
+}
+
 
 /*footer*/
 footer {
