@@ -1,3 +1,9 @@
+@font-face {
+	font-family: 'Oswald';
+	src: url('path-to-font.woff2') format('woff2');
+	font-display: swap;
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -139,16 +145,16 @@ table {
 :root {
 	/*day*/
 	--dayText: #14213d;
-	--dayBackgrd: #fcfbf9;
-	--dayPrime: #a1b3d7;
-	--dayAccent: #FFD301;
-
-	/*dark*/
-	--drkText: #a1b3d7;
-	--drkBackgrd: #14213d;
-	--drkPrime: #fcfbf9;
-	--drkAccent: #ffc300;
+	--dayBackground: #e0e4ee;
+	--prime: #44567c;
+	--accent: #ffc300;
+	/*darkmode*/
+	--drkText: #e0e4ee;
+	--drkBackground: #14213d;
 }
+
+
+
 
 /* GLOBAL STYLES for fixed 1280 px screen*/
 /* Hidden content for screen reader users - code from: https://webaim.org/techniques/css/invisiblecontent/ */
@@ -169,21 +175,58 @@ footer {
 }
 
 html {
-	background-color: var(--dayPrime);
-
+	background-color: var(--prime);
 }
 
+/*dark mode*/
+body.dark-mode {
+	background-color: var(--drkBackground);
+	color: var(--drkText);
+}
+
+body.dark-mode #heading {
+	color: var(--drkText);
+	font-size: .8rem;
+	margin-bottom: 0;
+}
+
+#toggleMode {
+	height: 100px;
+	width: 100px;
+}
+
+#heading {
+	color: var(--drkText);
+	font-size: .8rem;
+	margin-bottom: 0;
+}
+
+#mode {
+	margin-top: 0;
+	cursor: pointer;
+}
+
+#toggleMode {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0;
+	z-index: 1;
+}
+
+/*body styles for page in light mode*/
 body {
 	width: 1280px;
-	background-color: var(--dayBackgrd);
-	margin: 0 auto;
+	background-color: var(--dayBackground);
 	color: var(--dayText);
+	margin: 0 auto;
 	line-height: 1.5;
 	font-family: "Oswald", sans-serif;
 	font-style: normal;
 	box-sizing: border-box;
-
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 
 /*font styles*/
 h1,
@@ -198,10 +241,11 @@ h1 {
 	align-self: center;
 	font-size: 4rem;
 	font-weight: 700;
-	color: var(--dayText);
+
 }
 
 h2 {
+	margin: 1rem 0;
 	font-size: 2.5rem;
 	font-weight: 800;
 	padding: 5px;
@@ -235,12 +279,8 @@ img {
 
 
 /* button styles*/
-#switcherButtons {
-	text-align: center;
-	padding: 10px;
-}
-
 button {
+	background-color: var(--accent);
 	text-align: center;
 	text-decoration: none;
 	font-size: 16px;
@@ -252,25 +292,28 @@ button {
 button,
 input[type="submit"] {
 	display: block;
-	padding: 1rem;
-	background-color: var(--dayAccent);
+	padding: 1.1rem;
+	background-color: var(--accent);
 	color: var(--dayText);
 	border: none;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 button:hover {
-	background-color: #ffc300;
+	background-color: #f8ca24;
 	filter: drop-shadow(8px 8px 4px #777);
+	transition: background-color 0.3s ease, filter 0.3s ease;
 }
 
 /*header styles*/
 header {
-	background-color: var(--dayPrime);
+	position: relative;
+	background-color: var(--drkBackground);
+	color: var(--drkText);
 	display: grid;
 	grid-template-columns: 1fr 2fr 4fr;
 	grid-gap: 0.5rem;
-
+	padding-bottom: 20px;
 }
 
 header img {
@@ -287,19 +330,21 @@ header nav {
 header nav ul {
 	display: flex;
 	justify-content: space-around;
-	padding: 8px;
+	padding: 0px;
+	margin: 0;
 }
 
 nav a {
 	text-decoration: none;
-	color: var(--dayText);
+	color: var(--drkText);
 	font-size: 1.8rem;
 	font-weight: 300;
 	margin-right: 20px;
 }
 
 nav a:hover {
-	background-color: var(--dayAccent);
+	background-color: var(--accent);
+	color: var(--dayText);
 	padding: 4px;
 	border-radius: 6px;
 	filter: drop-shadow(8px 8px 4px #777);
@@ -309,7 +354,8 @@ nav a:hover {
 	position: fixed;
 	bottom: 0px;
 	right: 0px;
-	background-color: #8295bb;
+	background-color: var(--drkBackground);
+	color: var(--drkText);
 	padding: 4px;
 	border-radius: 6px;
 	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -318,8 +364,9 @@ nav a:hover {
 
 /*Christmas Promo*/
 #Christmas {
-	background-color: var(--dayPrime);
-	padding-bottom: 20px;
+	/*background-color: var(--dayPrime);*/
+	border: 4px solid var(--accent);
+	padding-bottom: 30px;
 }
 
 #Christmas .currentItem {
@@ -353,8 +400,7 @@ nav a:hover {
 /*Mountainbike section*/
 
 #mtb-bikes {
-	background-color: var(--dayBackgrd);
-	padding-bottom: 20px;
+	padding: 30px 0 30px 0;
 }
 
 #mtb-bikes .currentItem {
@@ -386,8 +432,8 @@ nav a:hover {
 
 /*Road bike section*/
 #rd-bikes {
-	background-color: var(--dayPrime);
-	padding-bottom: 20px;
+	border: 4px solid var(--accent);
+	padding: 30px 0 30px 0;
 }
 
 #rd-bikes .currentItem {
@@ -419,8 +465,7 @@ nav a:hover {
 
 /*Kids bike section*/
 #kidsBikes {
-	background-color: var(--dayBackgrd);
-	padding-bottom: 20px;
+	padding: 30px 0 30px 0;
 }
 
 #kidsBikes .currentItem {
@@ -454,22 +499,62 @@ nav a:hover {
 /* Game -- roll double fours to win--*/
 
 #game {
-	background-color: #6994eb;
-	max-width: calc(1280px - 32px);
-	margin: auto;
-	padding: 2rem;
-	border: 2px solid var(--dayText);
-	border-radius: 4px;
-	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	text-align: center;
+	margin: 20px auto;
+	padding: 20px;
+	border: 8px solid var(--accent);
+	background-color: var(--prime);
+	border-radius: 8px;
+	width: 900px;
+	box-sizing: border-box;
 }
 
-#game p {
-	font-size: 1.6rem;
+#diceContainer {
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	margin-bottom: 20px;
 }
 
-#game button {
-	display: block;
-	margin: auto;
+.diceBox {
+	margin-top: 10px;
+	width: 100px;
+	height: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--drkBackground);
+	border: 2px solid var(--accent);
+	border-radius: 8px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+.die {
+	font-size: 2.5rem;
+	font-weight: bold;
+	color: var(--drkText);
+}
+
+#gamePlay {
+	display: inline-block;
+	margin: 20px auto;
+	padding: 10px 20px;
+	font-size: 1.5rem;
+	cursor: pointer;
+	background-color: var(--accent);
+	border: none;
+	border-radius: 6px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	text-align: center;
+}
+
+
+#sendItMsg {
+	margin-top: 20px;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: var(--dayText);
 }
 
 /* ----- Shopping----- */
@@ -534,7 +619,8 @@ nav a:hover {
 
 /* form*/
 #contact {
-	background-color: var(--dayPrime);
+	border: 4px solid var(--accent);
+	padding: 30px 0 30px 0;
 }
 
 #contact p {
@@ -547,10 +633,9 @@ nav a:hover {
 }
 
 form {
-	max-width: calc(1280px - 32px);
+	width: 900px;
 	margin: auto;
-	padding: 10px;
-	background-color: var(--dayBackgrd);
+	padding: 1px;
 	border-radius: 6px;
 }
 
@@ -566,7 +651,7 @@ label,
 fieldset,
 textarea {
 	display: block;
-	font-size: 1rem;
+	font-size: 1.3rem;
 	width: 95%;
 }
 
@@ -582,7 +667,7 @@ textarea {
 	padding: 20px;
 	margin: 0 auto 1rem auto;
 	width: calc(60% - 1rem);
-	font-size: 1rem;
+	font-size: 1.2rem;
 	border-radius: 5px;
 }
 
@@ -632,5 +717,17 @@ input[type=submit]:hover {
 
 /*footer*/
 footer {
-	background-color: var(--dayPrime);
+	padding: 20px;
+	/*color: var(--dayText);*/
 }
+
+/*@media (max-width: 768px) {
+	body {
+		width: 100%;
+		font-size: 0.9rem;
+	}
+
+	#products1 {
+		grid-template-columns: 1fr;
+	}
+}*/
