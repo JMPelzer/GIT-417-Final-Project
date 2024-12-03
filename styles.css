@@ -148,7 +148,7 @@ table {
 	--dayBackground: #e0e4ee;
 	--prime: #44567c;
 	--accent: #ffc300;
-	/*darkmode*/
+	/*dark mode*/
 	--drkText: #e0e4ee;
 	--drkBackground: #14213d;
 }
@@ -397,7 +397,7 @@ nav a:hover {
 }
 
 
-/*Mountainbike section*/
+/*Mountain bike section*/
 
 #mtb-bikes {
 	padding: 30px 0 30px 0;
