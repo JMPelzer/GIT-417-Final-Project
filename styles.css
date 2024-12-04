@@ -246,14 +246,14 @@ h1 {
 
 h2 {
 	margin: 1rem 0;
-	font-size: 2.5rem;
+	font-size: 4rem;
 	font-weight: 800;
 	padding: 5px;
 	margin: 0.75rem;
 }
 
 h3 {
-	font-size: 2rem;
+	font-size: 3rem;
 	margin: 0.5rem;
 }
 
@@ -552,7 +552,7 @@ nav a:hover {
 
 #sendItMsg {
 	margin-top: 20px;
-	font-size: 1.2rem;
+	font-size: 1.5rem;
 	font-weight: bold;
 	color: var(--dayText);
 }
@@ -688,7 +688,7 @@ legend {
 fieldset label {
 	display: inline;
 	width: 60%;
-	margin-left: 0;
+	margin-left: 10px;
 }
 
 fieldset input {
@@ -696,32 +696,34 @@ fieldset input {
 	width: 25px;
 }
 
+/*radio buttons*/
 input[type="radio"] {
-	margin-top: 0.4em;
+	margin-right: 30px;
 	outline: none;
 	border: 1px solid var(--dayText);
 	border-radius: 30%;
 }
 
+
+/*submit button*/
 input[type=submit] {
 	width: 30%;
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 1.5rem;
-}
 
-input[type=submit]:hover {
-	background-color: #ffc300;
-	filter: drop-shadow(8px 8px 4px #777);
-}
+	input[type=submit]:hover {
+		background-color: #ffc300;
+		filter: drop-shadow(8px 8px 4px #777);
+	}
 
-/*footer*/
-footer {
-	padding: 20px;
-	/*color: var(--dayText);*/
-}
+	/*footer*/
+	footer {
+		padding: 20px;
+		/*color: var(--dayText);*/
+	}
 
-/*@media (max-width: 768px) {
+	/*@media (max-width: 768px) {
 	body {
 		width: 100%;
 		font-size: 0.9rem;

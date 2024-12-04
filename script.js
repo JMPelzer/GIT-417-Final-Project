@@ -126,7 +126,80 @@ function switchProductSet4(event) {
     }
 }
 
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
 
+    // Form elements
+    const fullName = document.getElementById("fullName").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const message = document.getElementById("message").value.trim();
+    const contactPref = document.querySelector('input[name="contactPref"]:checked').value;
+
+    // Error spans
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const messageError = document.getElementById("messageError");
+
+    // Validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10}$/;
+
+    let isValid = true;
+
+    // Clear errors
+    nameError.textContent = "";
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    messageError.textContent = "";
+
+    // Validate full name
+    if (!fullName) {
+        nameError.textContent = "Full name is required.";
+        isValid = false;
+    }
+
+    // Validate contact preference and corresponding field
+    if (contactPref === "email" && !emailRegex.test(email)) {
+        emailError.textContent = "Please provide a valid email address.";
+        isValid = false;
+    }
+
+    if (contactPref === "phone" && !phoneRegex.test(phone)) {
+        phoneError.textContent = "Please provide a valid 10-digit phone number.";
+        isValid = false;
+    }
+
+    // Validate message
+    if (!message) {
+        messageError.textContent = "Please enter a message.";
+        isValid = false;
+    }
+
+    // If valid, create customer object and display thank-you message
+    if (isValid) {
+        const customer = {
+            fullName: fullName,
+            contactPreference: contactPref,
+            email: email || "Not provided",
+            phone: phone || "Not provided",
+            message: message,
+        };
+
+        document.getElementById("contactForm").reset();
+        const thankYouMessage = document.getElementById("thankYouMessage");
+        thankYouMessage.style.display = "block";
+        thankYouMessage.innerHTML = `
+            <h3>Thank you for your submission!</h3>
+            <p>Name: ${customer.fullName}</p>
+            <p>Preferred Contact: ${customer.contactPreference}</p>
+            <p>Email: ${customer.email}</p>
+            <p>Phone: ${customer.phone}</p>
+            <p>Message: ${customer.message}</p>
+        `;
+    }
+});
 
 
 

@@ -43,16 +43,16 @@
         <section id="Christmas">
             <h2>Happy Holidays</h2>
             <section id="product1" class="currentItem">
-                <h3>Santa Loves 40% discounts on Bikes </h3>
+                <h3>Yule hope for joy over our sweet holiday prices!</h3>
                 <img src="images/Christmas1snowHop.jpg" alt="Trail riding in snowy winter forest doing a bunny hop"
                     width="600" height="400">
-                <p>Yule hope for joy over our sweet holiday prices! </p>
+                <p>It is the season of giving, and we are giving you 60% off select bikes! </p>
             </section>
 
             <section id="product2" class="hiddenItem">
                 <h3>Perfect Stocking Stuffers</h3>
-                <img src="images/Christmas2stocking.jpg" alt="Hands putting gift into santa Christmas stocking"
-                    width="600" height="400">
+                <img src="images/Christmas2.jpg" alt="Christmas stocking handing over fireplace" width="600"
+                    height="400">
                 <p>We have a great selection of gifts that are perfect for stocking stuffing that will not stuff your
                     budget.</p>
             </section>
@@ -66,7 +66,7 @@
 
             <section id="christmasButtons">
                 <h2 class="sr-only">Click on a Button to View a Product</h2>
-                <button id="btn1">40% off Select Bikes</button>
+                <button id="btn1">60% off Select Bikes</button>
                 <button id="btn2">Stocking Stuffers</button>
                 <button id="btn3">Jingle Bells Gear</button>
             </section>
@@ -94,7 +94,7 @@
 
             <section id="product6" class="hiddenItem">
                 <h3> Our Gravel Bike selection</h3>
-                <img src="images/MTB3.jpg" alt="Red Gravel bike with background of snow cap mountain and blue skies"
+                <img src="images/MTB3.jpg" alt="Blue Gravel bike with background of ocean, yellow post and blue skies"
                     width="600" height="400">
                 <p>Offering the best of both worlds. Offering versatility, speed and allows riders to get off the beaten
                     track.</p>
@@ -112,8 +112,8 @@
             <h2>Road Bikes</h2>
             <section id="product7" class="currentItem">
                 <h3>Road Rkt 48 Sport</h3>
-                <img src="images/roadbike1.jpeg" alt="person riding a red road bike background is blurred" width="600"
-                    height="400">
+                <img src="images/roadbike1.jpg" alt="Woman riding a road bike background summer low mountains"
+                    width="600" height="400">
                 <p>Engineered for optimal performance our Road Bikes are aerodynamic machines that are fast,
                     smooth,
                     comfortable and
@@ -122,7 +122,7 @@
 
             <section id="product8" class="hiddenItem">
                 <h3>Road Rocket</h3>
-                <img src="images/roadbike2.jpg" alt="Red bike leaning against a tree in the fall" width="600"
+                <img src="images/roadbike2.jpg" alt="person riding a red road bike background is blurred" width="600"
                     height="400">
                 <p>Designed to take you as far and as fast as your legs can manage on paved surface. Carbon fibre frames
                     and 12-speed drive train machines are more sophisticated than ever before</p>
@@ -133,7 +133,8 @@
                 <img src="images/roadbike3.jpg"
                     alt="Man riding his road bike in the house without a shirt in front of a fan with blue bike shoes"
                     width="600" height="400">
-                <p></p>
+                <p>Do not let the weather derail your training. Focus on your endurance, strength, intervals, high
+                    intensity and recovery. Our setups keep you spinning on your own bike.</p>
             </section>
 
             <section id="roadButtons">
@@ -157,8 +158,7 @@
 
             <section id="product11" class="hiddenItem">
                 <h3>Kids Rocket Jet</h3>
-                <img src="images/kidsbike2.jpg" alt="Girl with red backpack riding a bike in front of a corn field."
-                    width="600" height="400">
+                <img src="images/kidsbike2.jpg" alt="Happy boy riding bike with no hands." width="600" height="400">
                 <p>Kids move fast and grow faster we designed a child specific touch points that withstand the
                     development of young riders.</p>
             </section>
@@ -239,36 +239,39 @@
             <p>If you have questions, problems or warranty issues please contact us.</p>
             <p class="asteriskInfo">Required fields are marked with an asterisk (*)</p>
 
-            <form action="https://wp.zybooks.com/form-viewer.php" method="POST" target="_blank">
-                <label for="firstName">Fist Name<span class="required">*</span></label>
-                <input type="text" name="my-first-name" placeholder="(Enter first name)" id="firstName" required>
+            <form id="contactForm">
 
-                <label for="lastName">Last Name<span class="required">*</span></label>
-                <input type="text" name="my-last-name" placeholder="(Enter last name)" id="lastName" required>
+                <label for="fullName">Full Name<span class="required">*</span></label>
+                <input type="text" name="my-full-name" placeholder="(Enter full name)" id="fullName" required>
+                <span class="message" id="nameError"></span>
 
                 <fieldset>
                     <legend>Preferred Contact Method<span class="required">*</span></legend>
 
-                    <input type="radio" name="contact-pref" id="pref-email" checked>
-                    <label for="pref-email">Email</label>
-
-                    <input type="radio" name="contact-pref" id="pref-phone">
+                    <input type="radio" name="contact-pref" id="pref-phone" value="phone" checked>
                     <label for="pref-phone">Phone</label>
+
+                    <input type="radio" name="contact-pref" id="pref-email" value="email">
+                    <label for="pref-email">Email</label>
                 </fieldset>
 
                 <label for="email">Email<span class="required">*</span></label>
-                <input type="email" name="my-email" placeholder="(Enter Email)" id="email" required>
-
+                <input type="email" name="my-email" placeholder="(Enter Email)" id="email">
+                <span class="message" id="emailError"></span>
 
                 <label for="phone">Phone<span class="required">*</span></label>
-                <input type="tel" name="my-phone" placeholder="(Enter telephone number)" id="phone" required>
+                <input type="tel" name="my-phone" placeholder="(Enter telephone number)" id="phone">
+                <span class="message" id="phoneError"></span>
+
+
 
                 <label for="message">Message<span class="required">*</span></label>
                 <textarea id="message" name="my-message"></textarea>
+                <span class="message" id="messageError"></span>
 
                 <input type="submit" name="submit" value="Submit">
             </form>
-
+            <div id="thankYouMessage" style="display: none;"></div>
         </section>
     </main>
     <footer>
