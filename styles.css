@@ -711,19 +711,20 @@ input[type=submit] {
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 1.5rem;
+}
 
-	input[type=submit]:hover {
-		background-color: #ffc300;
-		filter: drop-shadow(8px 8px 4px #777);
-	}
+input[type=submit]:hover {
+	background-color: #ffc300;
+	filter: drop-shadow(8px 8px 4px #777);
+}
 
-	/*footer*/
-	footer {
-		padding: 20px;
-		/*color: var(--dayText);*/
-	}
+/*footer*/
+footer {
+	padding: 20px;
+	/*color: var(--dayText);*/
+}
 
-	/*@media (max-width: 768px) {
+/*@media (max-width: 768px) {
 	body {
 		width: 100%;
 		font-size: 0.9rem;

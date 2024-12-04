@@ -10,8 +10,8 @@ function game() {
     let gameMessage = document.getElementById("sendItMsg");
 
     // Generate two random numbers between 1 and 9
-    let die1 = getRandomNumber(1, 6);
-    let die2 = getRandomNumber(1, 6);
+    let die1 = getRandomNumber(1, 9);
+    let die2 = getRandomNumber(1, 9);
 
     // Display those numbers to the screen
     dieDisplay1.innerHTML = die1;
@@ -125,77 +125,75 @@ function switchProductSet4(event) {
         document.getElementById("product12").classList.add("currentItem");
     }
 }
-//helper function for form validation
-function validateField(value, regex, errorElement, errorMessage) {
-    if (!value || (regex && !regex.test(value))) {
-        errorElement.textContent = errorMessage;
-        return false;
-    }
-    errorElement.textContent = "";
-    return true;
-}
-// collect field values
-const fullName = document.getElementById("fullName").value.trim();
-const email = document.getElementById("email").value.trim();
-const phone = document.getElementById("phone").value.trim();
-const message = document.getElementById("message").value.trim();
-const contactPref = document.querySelector('input[name="contactPref"]:checked').value;
+//Form Validation
+const myForm = document.querySelector("form");
+const inputs = document.querySelectorAll("input, textarea");
+const errors = document.querySelectorAll(".error");
+const required = ["my-name", "my-email", "my-phone", "my-message"];
 
-// Error spans
-const nameError = document.getElementById("nameError");
-const emailError = document.getElementById("emailError");
-const phoneError = document.getElementById("phoneError");
-const messageError = document.getElementById("messageError");
 
-// Validation regex
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^\d{10}$/;
+//Event Listener
+myForm.addEventListener("submit", validation);
 
-let isValid = true;
+function validation(e) {
+    e.preventDefault();
+    let data = {};
+    let error = false;
 
-// Clear errors
-nameError.textContent = "";
-emailError.textContent = "";
-phoneError.textContent = "";
-messageError.textContent = "";
+    // Hide all error messages
+    errors.forEach((item) => {
+        item.classList.add("hide");
+    });
 
-// Validate full name
-if (!fullName) {
-    nameError.textContent = "Full name is required.";
-    isValid = false;
-}
+    // Validate each input
+    inputs.forEach((el) => {
+        let tempName = el.getAttribute("name");
+        if (tempName != null) {
+            el.style.borderColor = "#ddd";
 
-// Validate contact preference and corresponding field
-if (contactPref === "email" && !emailRegex.test(email)) {
-    emailError.textContent = "Please provide a valid email address.";
-    isValid = false;
-}
+            // Check for empty required fields
+            if (required.includes(tempName) && el.value.trim() === "") {
+                addError(el, "Required Field", tempName.replace("my-", "").toUpperCase());
+                error = true;
+            }
+            //name
+            if (tempName === "my-name" && el.value.trim() === "") {
+                addError(el, "Full name is required", tempName);
+                error = true;
+            }
 
-if (contactPref === "phone" && !phoneRegex.test(phone)) {
-    phoneError.textContent = "Please provide a valid 10-digit phone number.";
-    isValid = false;
-}
+            //email
+            if (tempName === "my-email") {
+                let exp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!exp.test(el.value)) {
+                    addError(el, "Invalid Email", tempName);
+                    error = true;
+                }
+            }
+            //phone
+            if (tempName === "my-phone") {
+                let exp = /^\+?\d{10,15}$/;
+                if (!exp.test(el.value)) {
+                    addError(el, "Please enter a valid phone number", "Phone");
+                    error = true;
+                }
 
-// Validate message
-if (!message) {
-    messageError.textContent = "Please enter a message.";
-    isValid = false;
-}
+            }
+            //message
+            if (tempName === "my-message" && el.value.trim() === "") {
+                addError(el, "Please enter a message", tempName);
+                error = true;
+            }
+            // Populate data object
+            data[tempName] = el.value.trim();
+        }
+    });
 
-// If valid, create customer object and display thank-you message
-if (isValid) {
-    const customer = {
-        fullName: fullName,
-        contactPreference: contactPref,
-        email: email || "Not provided",
-        phone: phone || "Not provided",
-        message: message,
-    };
+    if (!error) {
 
-    document.getElementById("contactForm").reset();
-    const thankYouMessage = document.getElementById("thankYouMessage");
-    thankYouMessage.style.display = "block";
-    thankYouMessage.innerHTML = `
+        const thankYouMessage = document.getElementById("thankYouMessage");
+        thankYouMessage.style.display = "block";
+        thankYouMessage.innerHTML = `
             <h3>Thank you for your submission!</h3>
             <p>Name: ${customer.fullName}</p>
             <p>Preferred Contact: ${customer.contactPreference}</p>
@@ -203,8 +201,24 @@ if (isValid) {
             <p>Phone: ${customer.phone}</p>
             <p>Message: ${customer.message}</p>
         `;
+
+        // Clear the form after showing the message
+        myForm.reset();
+    }
 }
-});
+
+function addError(el, message, fieldName) {
+    let temp = el.nextElementSibling;
+    temp.classList.remove("hide");
+    temp.textContent = `${fieldName}: ${message}`;
+    el.style.borderColor = "red";
+
+}
+
+
+
+
+
 
 
 
@@ -220,8 +234,6 @@ mode.addEventListener("click", () => {
     document.title = isDarkMode ? "Dark Mode" : "Light Mode";
     mode.textContent = isDarkMode ? "🌜" : "🌞";
 });
-
-
 
 //Switch of Christmas Products
 document.getElementById("christmasButtons").addEventListener("click", function (event) {
@@ -253,7 +265,3 @@ document.getElementById("kidsButtons").addEventListener("click", function (event
 
 //For Sent It game
 document.getElementById("gamePlay").addEventListener("click", game);
-
-//form validation
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
