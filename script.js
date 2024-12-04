@@ -10,8 +10,8 @@ function game() {
     let gameMessage = document.getElementById("sendItMsg");
 
     // Generate two random numbers between 1 and 9
-    let die1 = getRandomNumber(1, 9);
-    let die2 = getRandomNumber(1, 9);
+    let die1 = getRandomNumber(1, 6);
+    let die2 = getRandomNumber(1, 6);
 
     // Display those numbers to the screen
     dieDisplay1.innerHTML = die1;
@@ -125,72 +125,77 @@ function switchProductSet4(event) {
         document.getElementById("product12").classList.add("currentItem");
     }
 }
-
-document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Form elements
-    const fullName = document.getElementById("fullName").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const phone = document.getElementById("phone").value.trim();
-    const message = document.getElementById("message").value.trim();
-    const contactPref = document.querySelector('input[name="contactPref"]:checked').value;
-
-    // Error spans
-    const nameError = document.getElementById("nameError");
-    const emailError = document.getElementById("emailError");
-    const phoneError = document.getElementById("phoneError");
-    const messageError = document.getElementById("messageError");
-
-    // Validation regex
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\d{10}$/;
-
-    let isValid = true;
-
-    // Clear errors
-    nameError.textContent = "";
-    emailError.textContent = "";
-    phoneError.textContent = "";
-    messageError.textContent = "";
-
-    // Validate full name
-    if (!fullName) {
-        nameError.textContent = "Full name is required.";
-        isValid = false;
+//helper function for form validation
+function validateField(value, regex, errorElement, errorMessage) {
+    if (!value || (regex && !regex.test(value))) {
+        errorElement.textContent = errorMessage;
+        return false;
     }
+    errorElement.textContent = "";
+    return true;
+}
+// collect field values
+const fullName = document.getElementById("fullName").value.trim();
+const email = document.getElementById("email").value.trim();
+const phone = document.getElementById("phone").value.trim();
+const message = document.getElementById("message").value.trim();
+const contactPref = document.querySelector('input[name="contactPref"]:checked').value;
 
-    // Validate contact preference and corresponding field
-    if (contactPref === "email" && !emailRegex.test(email)) {
-        emailError.textContent = "Please provide a valid email address.";
-        isValid = false;
-    }
+// Error spans
+const nameError = document.getElementById("nameError");
+const emailError = document.getElementById("emailError");
+const phoneError = document.getElementById("phoneError");
+const messageError = document.getElementById("messageError");
 
-    if (contactPref === "phone" && !phoneRegex.test(phone)) {
-        phoneError.textContent = "Please provide a valid 10-digit phone number.";
-        isValid = false;
-    }
+// Validation regex
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phoneRegex = /^\d{10}$/;
 
-    // Validate message
-    if (!message) {
-        messageError.textContent = "Please enter a message.";
-        isValid = false;
-    }
+let isValid = true;
 
-    // If valid, create customer object and display thank-you message
-    if (isValid) {
-        const customer = {
-            fullName: fullName,
-            contactPreference: contactPref,
-            email: email || "Not provided",
-            phone: phone || "Not provided",
-            message: message,
-        };
+// Clear errors
+nameError.textContent = "";
+emailError.textContent = "";
+phoneError.textContent = "";
+messageError.textContent = "";
 
-        document.getElementById("contactForm").reset();
-        const thankYouMessage = document.getElementById("thankYouMessage");
-        thankYouMessage.style.display = "block";
-        thankYouMessage.innerHTML = `
+// Validate full name
+if (!fullName) {
+    nameError.textContent = "Full name is required.";
+    isValid = false;
+}
+
+// Validate contact preference and corresponding field
+if (contactPref === "email" && !emailRegex.test(email)) {
+    emailError.textContent = "Please provide a valid email address.";
+    isValid = false;
+}
+
+if (contactPref === "phone" && !phoneRegex.test(phone)) {
+    phoneError.textContent = "Please provide a valid 10-digit phone number.";
+    isValid = false;
+}
+
+// Validate message
+if (!message) {
+    messageError.textContent = "Please enter a message.";
+    isValid = false;
+}
+
+// If valid, create customer object and display thank-you message
+if (isValid) {
+    const customer = {
+        fullName: fullName,
+        contactPreference: contactPref,
+        email: email || "Not provided",
+        phone: phone || "Not provided",
+        message: message,
+    };
+
+    document.getElementById("contactForm").reset();
+    const thankYouMessage = document.getElementById("thankYouMessage");
+    thankYouMessage.style.display = "block";
+    thankYouMessage.innerHTML = `
             <h3>Thank you for your submission!</h3>
             <p>Name: ${customer.fullName}</p>
             <p>Preferred Contact: ${customer.contactPreference}</p>
@@ -198,7 +203,7 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
             <p>Phone: ${customer.phone}</p>
             <p>Message: ${customer.message}</p>
         `;
-    }
+}
 });
 
 
@@ -215,6 +220,8 @@ mode.addEventListener("click", () => {
     document.title = isDarkMode ? "Dark Mode" : "Light Mode";
     mode.textContent = isDarkMode ? "🌜" : "🌞";
 });
+
+
 
 //Switch of Christmas Products
 document.getElementById("christmasButtons").addEventListener("click", function (event) {
@@ -246,3 +253,7 @@ document.getElementById("kidsButtons").addEventListener("click", function (event
 
 //For Sent It game
 document.getElementById("gamePlay").addEventListener("click", game);
+
+//form validation
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault();
