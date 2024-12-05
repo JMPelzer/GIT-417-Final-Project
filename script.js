@@ -222,24 +222,39 @@ function addError(el, message, fieldName) {
 
 }
 
-
-
-
-
-
-
-
-
-
 //Event Listeners
 
 //Dark and light mode
+// Check and apply saved mode preference on page load
+document.addEventListener("DOMContentLoaded", () => {
+    const savedMode = localStorage.getItem("theme");
+    if (savedMode === "dark") {
+        document.body.classList.add("dark-mode");
+        heading.textContent = "Dark Mode";
+        document.title = "Dark Mode";
+        mode.textContent = "🌜";
+    } else {
+        document.body.classList.remove("dark-mode");
+        heading.textContent = "Light Mode";
+        document.title = "Light Mode";
+        mode.textContent = "🌞";
+    }
+});
+
+// Toggle mode and save preference to localStorage
 mode.addEventListener("click", () => {
-    document.body.classList.toggle("dark-mode");
-    const isDarkMode = document.body.classList.contains("dark-mode");
-    heading.textContent = isDarkMode ? "Dark Mode" : "Light Mode";
-    document.title = isDarkMode ? "Dark Mode" : "Light Mode";
-    mode.textContent = isDarkMode ? "🌜" : "🌞";
+    const isDarkMode = document.body.classList.toggle("dark-mode");
+    if (isDarkMode) {
+        heading.textContent = "Dark Mode";
+        document.title = "Dark Mode";
+        mode.textContent = "🌜";
+        localStorage.setItem("theme", "dark");
+    } else {
+        heading.textContent = "Light Mode";
+        document.title = "Light Mode";
+        mode.textContent = "🌞";
+        localStorage.setItem("theme", "light");
+    }
 });
 
 //Switch of Christmas Products
