@@ -10,8 +10,8 @@ function game() {
     let gameMessage = document.getElementById("sendItMsg");
 
     // Generate two random numbers between 1 and 9
-    let die1 = getRandomNumber(1, 9);
-    let die2 = getRandomNumber(1, 9);
+    let die1 = getRandomNumber(1, 6);
+    let die2 = getRandomNumber(1, 6);
 
     // Display those numbers to the screen
     dieDisplay1.innerHTML = die1;
@@ -20,7 +20,7 @@ function game() {
     // Check if both dice show 4
     if (die1 === 4 && die2 === 4) {
         gameMessage.innerHTML = "Send It! You Win!";
-        gameMessage.style.color = "green";
+        gameMessage.style.color = "#7cfc00";
     } else {
         gameMessage.innerHTML = "Sorry. Try Again.";
         gameMessage.style.color = "red";
@@ -158,7 +158,7 @@ function validation(e) {
             }
             //name
             if (tempName === "my-name" && el.value.trim() === "") {
-                addError(el, "Full name is required", tempName);
+                addError(el, "Full name is required", "Full Name");
                 error = true;
             }
 
@@ -166,7 +166,7 @@ function validation(e) {
             if (tempName === "my-email") {
                 let exp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 if (!exp.test(el.value)) {
-                    addError(el, "Invalid Email", tempName);
+                    addError(el, "Invalid Email", "Email");
                     error = true;
                 }
             }
@@ -181,7 +181,7 @@ function validation(e) {
             }
             //message
             if (tempName === "my-message" && el.value.trim() === "") {
-                addError(el, "Please enter a message", tempName);
+                addError(el, "Please enter a message", "Message");
                 error = true;
             }
             // Populate data object
@@ -190,6 +190,13 @@ function validation(e) {
     });
 
     if (!error) {
+        const customer = {
+            fullName: data["my-name"],
+            email: data["my-email"],
+            phone: data["my-phone"],
+            message: data["my-message"],
+            contactPreference: document.querySelector('input[name="contact-pref"]:checked').value
+        };
 
         const thankYouMessage = document.getElementById("thankYouMessage");
         thankYouMessage.style.display = "block";

@@ -396,6 +396,9 @@ nav a:hover {
 	align-self: end;
 }
 
+#Christmas h2 {
+	color: rgb(184, 20, 20)
+}
 
 /*Mountain bike section*/
 
@@ -552,7 +555,7 @@ nav a:hover {
 
 #sendItMsg {
 	margin-top: 20px;
-	font-size: 1.5rem;
+	font-size: 2rem;
 	font-weight: bold;
 	color: var(--dayText);
 }
@@ -645,6 +648,24 @@ form {
 	font-weight: bold;
 }
 
+/* added css for JavaScript form messages*/
+.hide {
+	display: none;
+}
+
+.error {
+	color: red;
+	font-size: 1.5rem;
+	font-family: sans-serif;
+	font-style: bold;
+}
+
+#thankYouMessage {
+	color: #63b80f;
+	font-size: 1.3rem;
+	font-style: bold;
+}
+
 /* ----- FORM CONTROLS ----- */
 input,
 label,
@@ -723,14 +744,3 @@ footer {
 	padding: 20px;
 	/*color: var(--dayText);*/
 }
-
-/*@media (max-width: 768px) {
-	body {
-		width: 100%;
-		font-size: 0.9rem;
-	}
-
-	#products1 {
-		grid-template-columns: 1fr;
-	}
-}*/
